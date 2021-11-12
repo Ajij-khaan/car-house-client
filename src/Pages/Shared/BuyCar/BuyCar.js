@@ -24,7 +24,7 @@ const BuyCar = () => {
 
     const onSubmit = data => {
         // console.log(data);
-        const newOrder = { name: data.name, email: data.email, shipping: data.address };
+        const newOrder = { name: data.name, email: data.email, shipping: data.address, carDetails: car[0] };
         console.log(newOrder);
 
         fetch('http://localhost:5000/manageorder', {
