@@ -5,6 +5,7 @@ import Login from './Pages/Authentication/Login/Login';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import Register from './Pages/Authentication/Register/Register';
 import BuyCar from './Pages/Shared/BuyCar/BuyCar';
+import PrivateRoute from './Pages/Authentication/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -24,9 +25,9 @@ function App() {
             <Route path="/register">
               <Register></Register>
             </Route>
-            <Route path="/buycar/:orderId">
+            <PrivateRoute path="/buycar/:orderId">
               <BuyCar></BuyCar>
-            </Route>
+            </PrivateRoute>
 
           </Switch>
         </Router>
