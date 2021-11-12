@@ -1,22 +1,22 @@
 import React from 'react';
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form';
 import { useHistory, useLocation } from 'react-router';
 import useAuth from '../../../hooks/useAuth';
 
-const Login = () => {
-    const { loginUser } = useAuth();
-
+const Register = () => {
     const location = useLocation();
     const history = useHistory();
-
+    const { registerUser } = useAuth();
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data.email, data.password);
-        loginUser(data.email, data.password, location, history);
+        // setEmail(data.email)
+        // setPassword(data.password)
+        registerUser(data.email, data.password, location, history);
     }
 
-    return (
 
+    return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <input {...register("email", { required: true })} type="email" placeholder="Your Email" />
             <br />
@@ -31,4 +31,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
