@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Card, Col } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
 const BuyCar = () => {

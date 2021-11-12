@@ -8,14 +8,14 @@ const useFirebase = () => {
 
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const auth = getAuth();
 
     const registerUser = (email, password, location, history) => {
+        setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // Signed in 
                 const user = userCredential.user;
                 console.log(user);
                 history.push(location.state?.from || '/home');
@@ -24,11 +24,13 @@ const useFirebase = () => {
             .catch((error) => {
                 setError(error.message);
                 console.log(error.message);
-            });
+            })
+            .finally(() => setIsLoading(false));
 
     }
 
     const loginUser = (email, password, location, history) => {
+        setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
 
@@ -40,7 +42,8 @@ const useFirebase = () => {
             .catch((error) => {
                 setError(error.message);
                 console.log(error.message);
-            });
+            })
+            .finally(() => setIsLoading(false));
     }
 
     //Firebase Logout System
@@ -50,6 +53,7 @@ const useFirebase = () => {
             .then(() => {
                 console.log('success signout')
             })
+            .finally(() => setIsLoading(false));
 
     }
 

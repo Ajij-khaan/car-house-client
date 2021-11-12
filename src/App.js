@@ -28,7 +28,6 @@ function App() {
             <PrivateRoute path="/buycar/:orderId">
               <BuyCar></BuyCar>
             </PrivateRoute>
-
           </Switch>
         </Router>
       </AuthProvider>
