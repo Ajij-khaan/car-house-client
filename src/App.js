@@ -9,6 +9,8 @@ import PrivateRoute from './Pages/Authentication/PrivateRoute/PrivateRoute';
 import MyOrder from './Pages/Dashboard/MyOrder/MyOrder';
 import ManageAllOrder from './Pages/Dashboard/ManageAllOrder/ManageAllOrder';
 import AddCar from './Pages/Dashboard/AddCar/AddCar';
+import AddReview from './Pages/Dashboard/AddReview/AddReview';
+import ManageCars from './Pages/Dashboard/ManageCars/ManageCars';
 
 
 
@@ -33,8 +35,14 @@ function App() {
             <PrivateRoute path="/myorder">
               <MyOrder></MyOrder>
             </PrivateRoute>
+            <PrivateRoute path="/managecars">
+              <ManageCars></ManageCars>
+            </PrivateRoute>
             <PrivateRoute path="/addcar">
               <AddCar></AddCar>
+            </PrivateRoute>
+            <PrivateRoute path="/addreview">
+              <AddReview></AddReview>
             </PrivateRoute>
             <PrivateRoute path="/manageAllOrder">
               <ManageAllOrder></ManageAllOrder>

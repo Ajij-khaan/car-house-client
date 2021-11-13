@@ -1,30 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-
-import useAuth from '../../../hooks/useAuth';
+import { Col, Container, Row } from 'react-bootstrap';
 import Navigation from '../../Shared/Navigation/Navigation';
 
+const ManageCars = () => {
 
-const MyOrder = () => {
 
-    const { user } = useAuth();
-    const [allOrders, setAllOrders] = useState([]);
+    const [cars, setCars] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/manageorder')
+        fetch('http://localhost:5000/cars')
             .then(res => res.json())
-            .then(data => setAllOrders(data))
+            .then(data => setCars(data))
     }, [])
 
-    console.log(allOrders);
-
-    const myOrder = allOrders.filter(order => order?.email === user?.email);
-    console.log(myOrder);
-
+    console.log(cars);
 
     const handleDelete = id => {
 
-        fetch(`http://localhost:5000/manageorder/${id}`, {
+        fetch(`http://localhost:5000/cars/${id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
@@ -35,19 +28,19 @@ const MyOrder = () => {
                 if (data.deletedCount !== 0) {
                     alert('deleted Successfully');
                     console.log(data);
-                    const remain = allOrders.filter(order => order?._id !== id);
-                    setAllOrders(remain);
+                    const remain = cars.filter(order => order?._id !== id);
+                    setCars(remain);
                 }
             })
     }
 
     return (
-        <Container>
-            <Navigation></Navigation>
-            <div>
-                <h1 className='text-uppercase my-5 fw-bold fs-1 text-danger'>My order</h1>
+        <div>
+            <Container>
+                <Navigation></Navigation>
+                <h1 className='text-uppercase my-5 fw-bold fs-1 text-danger'>Manage All order</h1>
                 {
-                    myOrder.map(order =>
+                    cars.map(order =>
 
                         <div className='border border-danger rounded border-3 border-start-0 border-end-0 border-bottom-0 bg-light mb-5'>
                             <Row className='d-flex justify-content-between p-3'>
@@ -88,9 +81,10 @@ const MyOrder = () => {
                         </div>
                     )
                 }
-            </div>
-        </Container>
+            </Container>
+            );
+        </div>
     );
 };
 
-export default MyOrder;
+export default ManageCars;
