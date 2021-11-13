@@ -3,6 +3,7 @@ import { Card, Col } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
 import useAuth from '../../../hooks/useAuth';
+import Navigation from '../Navigation/Navigation';
 
 const BuyCar = () => {
     const { orderId } = useParams();
@@ -45,6 +46,7 @@ const BuyCar = () => {
 
     return (
         <>
+            <Navigation></Navigation>
             <Col>
                 <Card className="border-1 ">
                     <Card.Img variant="top" src={car[0]?.img} />

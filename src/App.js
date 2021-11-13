@@ -6,6 +6,10 @@ import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import Register from './Pages/Authentication/Register/Register';
 import BuyCar from './Pages/Shared/BuyCar/BuyCar';
 import PrivateRoute from './Pages/Authentication/PrivateRoute/PrivateRoute';
+import MyOrder from './Pages/Dashboard/MyOrder/MyOrder';
+import ManageAllOrder from './Pages/Dashboard/ManageAllOrder/ManageAllOrder';
+
+
 
 function App() {
   return (
@@ -25,6 +29,12 @@ function App() {
             <Route path="/register">
               <Register></Register>
             </Route>
+            <PrivateRoute path="/myorder">
+              <MyOrder></MyOrder>
+            </PrivateRoute>
+            <PrivateRoute path="/manageAllOrder">
+              <ManageAllOrder></ManageAllOrder>
+            </PrivateRoute>
             <PrivateRoute path="/buycar/:orderId">
               <BuyCar></BuyCar>
             </PrivateRoute>
