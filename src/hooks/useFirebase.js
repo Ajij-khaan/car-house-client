@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import initializeFirebase from "../Pages/Authentication/Firebase/firebase.init";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
 
 
 initializeFirebase();
@@ -12,12 +12,23 @@ const useFirebase = () => {
 
     const auth = getAuth();
 
-    const registerUser = (email, password, location, history) => {
+    const registerUser = (email, password, name, location, history) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
                 console.log(user);
+
+
+                updateProfile(auth.currentUser, {
+                    displayName: name
+                }).then(() => {
+                    saveUser(email, name);
+                }).catch((error) => {
+                    // An error occurred
+                    // ...
+                });
+
                 history.push(location.state?.from || '/home');
 
             })
@@ -69,6 +80,20 @@ const useFirebase = () => {
         });
         return () => unsubscribed;
     }, [])
+
+    //save user to DB
+
+    const saveUser = (email, displayName) => {
+        const user = { email, displayName, role: "user" };
+        fetch('http://localhost:5000/users', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
+    }
 
 
     return {

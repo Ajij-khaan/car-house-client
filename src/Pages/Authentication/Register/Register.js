@@ -12,12 +12,14 @@ const Register = () => {
         console.log(data.email, data.password);
         // setEmail(data.email)
         // setPassword(data.password)
-        registerUser(data.email, data.password, location, history);
+        registerUser(data.email, data.password, data.name, location, history);
     }
 
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
+            <input {...register("name", { required: true })} type="text" placeholder="Your Name" />
+            <br />
             <input {...register("email", { required: true })} type="email" placeholder="Your Email" />
             <br />
             {errors.email && <span>This field is required</span>}

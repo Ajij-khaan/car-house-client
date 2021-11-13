@@ -11,6 +11,7 @@ import ManageAllOrder from './Pages/Dashboard/ManageAllOrder/ManageAllOrder';
 import AddCar from './Pages/Dashboard/AddCar/AddCar';
 import AddReview from './Pages/Dashboard/AddReview/AddReview';
 import ManageCars from './Pages/Dashboard/ManageCars/ManageCars';
+import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
 
 
 
@@ -37,6 +38,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute path="/managecars">
               <ManageCars></ManageCars>
+            </PrivateRoute>
+            <PrivateRoute path="/makeadmin">
+              <MakeAdmin></MakeAdmin>
             </PrivateRoute>
             <PrivateRoute path="/addcar">
               <AddCar></AddCar>
