@@ -19,6 +19,7 @@ const Navigation = () => {
                             <Nav.Link as={HashLink} to="/home" className="fw-bold text-dark">ORDER</Nav.Link>
                             {!user?.email && <Nav.Link as={HashLink} to="/login" className="fw-bold text-dark">Login</Nav.Link>}
                             {user?.email && <Nav.Link as={HashLink} to="/myorder" className="fw-bold text-dark">MyOrder</Nav.Link>}
+                            {user?.email && <Nav.Link as={HashLink} to="/addcar" className="fw-bold text-dark">AddCar</Nav.Link>}
                             {user?.email && <Nav.Link as={HashLink} to="/manageAllOrder" className="fw-bold text-dark">Mange Order</Nav.Link>}
                             {
                                 user?.email &&

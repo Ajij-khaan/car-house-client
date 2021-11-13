@@ -8,6 +8,7 @@ import BuyCar from './Pages/Shared/BuyCar/BuyCar';
 import PrivateRoute from './Pages/Authentication/PrivateRoute/PrivateRoute';
 import MyOrder from './Pages/Dashboard/MyOrder/MyOrder';
 import ManageAllOrder from './Pages/Dashboard/ManageAllOrder/ManageAllOrder';
+import AddCar from './Pages/Dashboard/AddCar/AddCar';
 
 
 
@@ -31,6 +32,9 @@ function App() {
             </Route>
             <PrivateRoute path="/myorder">
               <MyOrder></MyOrder>
+            </PrivateRoute>
+            <PrivateRoute path="/addcar">
+              <AddCar></AddCar>
             </PrivateRoute>
             <PrivateRoute path="/manageAllOrder">
               <ManageAllOrder></ManageAllOrder>
