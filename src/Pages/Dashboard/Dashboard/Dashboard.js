@@ -10,15 +10,17 @@ import {
     useParams,
     useRouteMatch
 } from "react-router-dom";
+import PrivateRoute from '../../Authentication/PrivateRoute/PrivateRoute';
+import AddCar from '../AddCar/AddCar';
+
+import AddReview from '../AddReview/AddReview';
+import DashboardHome from '../DashboardHome/DashboardHome';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 
 
 
 const Dashboard = () => {
-    const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     let { path, url } = useRouteMatch();
 
@@ -29,33 +31,46 @@ const Dashboard = () => {
             <Row>
                 <Col md={4}>
                     <h1>Dashbard</h1>
-                    <Button variant="primary" onClick={handleShow}>
-                        Launch
-                    </Button>
 
-                    <Offcanvas show={show} onHide={handleClose}>
-                        <Offcanvas.Header closeButton>
-                            <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-                        </Offcanvas.Header>
-                        <Offcanvas.Body>
-                            Some text as placeholder. In real life you can have the elements you
-                            have chosen. Like, text, images, lists, etc.
-                        </Offcanvas.Body>
-                    </Offcanvas>
 
                     <Link to={`${url}/makeadmin`}>Make Admin</Link>
+                    <br />
+                    <Link to={`${url}/addreview`}>Add REview</Link>
+                    <br />
+                    <Link to={`${url}/manageAllOrder`}>manageorder</Link>
+                    <br />
+                    <Link to={`${url}/myorder`}>myorder</Link>
+                    <br />
+                    <Link to={`${url}/addcar`}>addcar</Link>
+                    <br />
+
+
 
                 </Col>
                 <Col md={8}>
                     <h1>THis is col2</h1>
 
                     <Switch>
-                        <Route exact path={path}>
-                            <h3>Please select a topic.</h3>
-                        </Route>
-                        <Route path={`${path}/:makeadmin`}>
+
+
+                        <PrivateRoute exact path={`${path}/makeadmin`}>
                             <MakeAdmin></MakeAdmin>
-                        </Route>
+                        </PrivateRoute>
+
+                        <PrivateRoute exact path={`${path}/addreview`}>
+                            <AddReview></AddReview>
+                        </PrivateRoute>
+
+                        <PrivateRoute exact path={`${path}/manageAllOrder`}>
+                            <AddReview></AddReview>
+                        </PrivateRoute>
+                        <PrivateRoute exact path={`${path}/myorder`}>
+                            <AddReview></AddReview>
+                        </PrivateRoute>
+                        <PrivateRoute exact path={`${path}/addcar`}>
+                            <AddCar></AddCar>
+                        </PrivateRoute>
+
                     </Switch>
                 </Col>
             </Row>

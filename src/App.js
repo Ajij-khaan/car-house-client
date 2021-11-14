@@ -13,6 +13,7 @@ import AddReview from './Pages/Dashboard/AddReview/AddReview';
 import ManageCars from './Pages/Dashboard/ManageCars/ManageCars';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
+import DashboardHome from './Pages/Dashboard/DashboardHome/DashboardHome';
 
 
 
@@ -34,30 +35,42 @@ function App() {
             <Route path="/register">
               <Register></Register>
             </Route>
+
+            <PrivateRoute path="/dashboard">
+              <Dashboard></Dashboard>
+            </PrivateRoute>
+
+            <PrivateRoute path="/dashboardhome">
+              <DashboardHome></DashboardHome>
+            </PrivateRoute>
+
             <PrivateRoute path="/myorder">
               <MyOrder></MyOrder>
             </PrivateRoute>
-            <PrivateRoute path="/managecars">
-              <ManageCars></ManageCars>
-            </PrivateRoute>
-            <PrivateRoute path="/makeadmin">
-              <MakeAdmin></MakeAdmin>
-            </PrivateRoute>
-            <PrivateRoute path="/addcar">
-              <AddCar></AddCar>
+
+            <PrivateRoute path="/manageAllOrder">
+              <ManageAllOrder></ManageAllOrder>
             </PrivateRoute>
             <PrivateRoute path="/addreview">
               <AddReview></AddReview>
             </PrivateRoute>
-            <PrivateRoute path="/dashboard">
-              <Dashboard></Dashboard>
-            </PrivateRoute>
-            <PrivateRoute path="/manageAllOrder">
-              <ManageAllOrder></ManageAllOrder>
+
+            <PrivateRoute path="/addcar">
+              <AddCar></AddCar>
             </PrivateRoute>
             <PrivateRoute path="/buycar/:orderId">
               <BuyCar></BuyCar>
             </PrivateRoute>
+
+            <PrivateRoute path="/managecars">
+              <ManageCars></ManageCars>
+            </PrivateRoute>
+
+            <PrivateRoute path="/makeadmin">
+              <MakeAdmin></MakeAdmin>
+            </PrivateRoute>
+
+
           </Switch>
         </Router>
       </AuthProvider>
