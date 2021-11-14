@@ -15,8 +15,6 @@ import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import DashboardHome from './Pages/Dashboard/DashboardHome/DashboardHome';
 
-
-
 function App() {
   return (
     <div className="App">

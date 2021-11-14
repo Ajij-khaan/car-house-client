@@ -8,23 +8,28 @@ import useAuth from '../../../hooks/useAuth'
 const Navigation = () => {
     const { user, logOut } = useAuth();
     return (
-        <div>
+        <div >
             <Navbar collapseOnSelect expand="lg" sticky="top" variant="dark">
                 <Container className="fw-bold">
-                    <Navbar.Brand as={Link} to="/home" className="fw-bold text-dark my-3">TOUR BUDDY</Navbar.Brand>
+                    <Navbar.Brand as={Link} to="/home" className="fw-bolder text-white my-3">CAR HOUSE</Navbar.Brand>
                     <Navbar.Toggle className=' bg-dark' />
                     <Navbar.Collapse className="justify-content-end text-dark">
                         <Nav className="ms-auto">
-                            <Nav.Link as={HashLink} to="/home" className="fw-bold text-dark">HOME</Nav.Link>
-                            <Nav.Link as={HashLink} to="/home" className="fw-bold text-dark">ORDER</Nav.Link>
-                            {!user?.email && <Nav.Link as={HashLink} to="/login" className="fw-bold text-dark">Login</Nav.Link>}
-                            {user?.email && <Nav.Link as={HashLink} to="/myorder" className="fw-bold text-dark">MyOrder</Nav.Link>}
-                            {user?.email && <Nav.Link as={HashLink} to="/addcar" className="fw-bold text-dark">AddCar</Nav.Link>}
-                            {user?.email && <Nav.Link as={HashLink} to="/addreview" className="fw-bold text-dark">AddReview</Nav.Link>}
-                            {user?.email && <Nav.Link as={HashLink} to="/manageAllOrder" className="fw-bold text-dark">Mange Order</Nav.Link>}
+                            <Nav.Link as={HashLink} to="/" className="fw-bold text-white">HOME</Nav.Link>
+                            <Nav.Link as={HashLink} to="/explorecar" className="fw-bold text-white">EXPLORER CARS</Nav.Link>
+                            {user?.email && <Nav.Link as={HashLink} to="/dashboard" className="fw-bold text-white">DASHBOARD</Nav.Link>}
+                            {/* <Nav.Link as={HashLink} to="/home" className="fw-bold text-white">ORDER</Nav.Link> */}
+                            {/* {!user?.email && <Nav.Link as={HashLink} to="/login" className="fw-bold text-white">Login</Nav.Link>}
+
+                            {user?.email && <Nav.Link as={HashLink} to="/myorder" className="fw-bold text-white">MyOrder</Nav.Link>}
+
+
+                            {user?.email && <Nav.Link as={HashLink} to="/addcar" className="fw-bold text-white">AddCar</Nav.Link>}
+                            {user?.email && <Nav.Link as={HashLink} to="/addreview" className="fw-bold text-white">AddReview</Nav.Link>}
+                            {user?.email && <Nav.Link as={HashLink} to="/manageAllOrder" className="fw-bold text-white">Mange Order</Nav.Link>} */}
                             {
                                 user?.email &&
-                                <Button onClick={logOut}>Logout </Button>
+                                <Button className="text-primary btn btn-primary text-white fw-bold rounded-pill px-3" onClick={logOut}>LOGOUT </Button>
                             }
 
                         </Nav>

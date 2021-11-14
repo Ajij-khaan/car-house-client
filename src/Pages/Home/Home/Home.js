@@ -9,12 +9,14 @@ import Reviews from '../Reviews/Reviews';
 const Home = () => {
     return (
         <div>
-            <Navigation></Navigation>
+            <div style={{ backgroundColor: "black", color: "white" }}>
+                <Navigation></Navigation>
+            </div>
             <Banner></Banner>
             <Cars></Cars>
             <Reviews></Reviews>
             <Footer></Footer>
-        </div>
+        </div >
     );
 };
 

@@ -52,7 +52,6 @@ const Dashboard = () => {
 
                     <Switch>
 
-
                         <PrivateRoute exact path={`${path}/makeadmin`}>
                             <MakeAdmin></MakeAdmin>
                         </PrivateRoute>
