@@ -14,6 +14,7 @@ import ManageCars from './Pages/Dashboard/ManageCars/ManageCars';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import DashboardHome from './Pages/Dashboard/DashboardHome/DashboardHome';
+import ExplorerCars from './Pages/Shared/ExplorerCars/ExplorerCars';
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
               <Register></Register>
             </Route>
 
+            <PrivateRoute path="/explorercar">
+              <ExplorerCars></ExplorerCars>
+            </PrivateRoute>
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
             </PrivateRoute>
