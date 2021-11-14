@@ -12,6 +12,7 @@ import AddCar from './Pages/Dashboard/AddCar/AddCar';
 import AddReview from './Pages/Dashboard/AddReview/AddReview';
 import ManageCars from './Pages/Dashboard/ManageCars/ManageCars';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 
 
 
@@ -47,6 +48,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute path="/addreview">
               <AddReview></AddReview>
+            </PrivateRoute>
+            <PrivateRoute path="/dashboard">
+              <Dashboard></Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/manageAllOrder">
               <ManageAllOrder></ManageAllOrder>
