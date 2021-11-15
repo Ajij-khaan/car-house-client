@@ -1,22 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import Navigation from '../../Shared/Navigation/Navigation';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 
 const ManageCars = () => {
 
-
     const [cars, setCars] = useState([]);
-
     useEffect(() => {
         fetch('http://localhost:5000/cars')
             .then(res => res.json())
             .then(data => setCars(data))
     }, [])
 
-    console.log(cars);
-
     const handleDelete = id => {
-
         fetch(`http://localhost:5000/cars/${id}`, {
             method: 'DELETE',
             headers: {
@@ -33,56 +27,44 @@ const ManageCars = () => {
                 }
             })
     }
-
     return (
         <div>
-            <Container>
-                <Navigation></Navigation>
-                <h1 className='text-uppercase my-5 fw-bold fs-1 text-danger'>Manage All order</h1>
-                {
-                    cars.map(order =>
+            <Container className="mb-5">
+                <Row xs={1} md={2} lg={2} className="g-4 mt-5border-primary">
+                    {
+                        cars.map(car =>
+                            <Col>
+                                <Card className="p-3 bg-light shadow-sm">
+                                    <Card.Header className="text-start fw-bold py- fs-5">{car.name}</Card.Header>
 
-                        <div className='border border-danger rounded border-3 border-start-0 border-end-0 border-bottom-0 bg-light mb-5'>
-                            <Row className='d-flex justify-content-between p-3'>
-                                <Col xs={12} md={3}>
-                                    <h1 className='fs-6 text-dark'>Order ID: <br />{order._id}</h1>
-                                </Col>
-                                <Col xs={12} md={3}>
-                                    <h1 className='fs-6 text-dark'>{order?.name}</h1>
-                                    <h1 className='fs-6 text-dark'>{order?.email}</h1>
-                                </Col>
-                                <Col xs={12} md={3}>
-                                    <h1 className='fs-6 text-dark'>Shipping Address: <br />{order.shipping}</h1>
-                                </Col>
-                            </Row>
-                            <h3 className='text-danger fs-5 text-uppercase'> Order Summary</h3>
-                            <Row>
-                                <Col xs={6} md={12} className='d-flex mt-3'>
-                                    <img src={order?.orderDetails?.img} alt="" className='w-50 text-dark' />
-                                    <div className='ms-3 d-flex align-items-center felx-column'>
-                                        <div>
+                                    <Card.Img variant="top" src={car.img} />
 
-                                            <p className='fs-3 fw-bold text-uppercase text-dark'>{order?.orderDetails?.name}</p>
-                                            <div>
-                                                <div className='d-flex justify-content-between align-items-center'>
-                                                    <div className='d-flex align-items-center'>
-                                                        <p className='fw-bold text-danger fs-3'>$ {order?.orderDetails?.price}</p>
-                                                        <p className='fs-5 mt-2 text-muted fw-bold ms-2'>/Per Person</p>
-                                                    </div>
-                                                    <p className='fs-5 mt-2 ms-3 fw-bold text-dark'>{order?.orderDetails?.Duration}</p>
-                                                </div>
-                                                <button onClick={() => handleDelete(order._id)} className='w-50 btn btn-danger fw-bold w-100'>Delete Order</button>
+                                    <Card.Body >
+                                        <Card.Text className="d-flex justify-content-between">
+                                            <div className=" fs-6 ">
+                                                Milage:<span className="text-dark fw-bold"> {car.milage}</span>
                                             </div>
-                                        </div>
+                                            <Card.Text className=" fs-6 ">
+                                                Year:<span className="text-dark fw-bold"> {car.year}</span>
+                                            </Card.Text>
+                                        </Card.Text>
+                                        <Card.Text className=" fs-6 text-start ">
+                                            Engine:<span className="text-dark fw-bold"> {car.engine.slice(0, 20)}</span>
+                                        </Card.Text>
 
-                                    </div>
-                                </Col>
-                            </Row>
-                        </div>
-                    )
-                }
+                                        <div className="d-flex justify-content-between align-items-center">
+                                            <Card.Text className=" fs-6 text-start ">
+                                                <span className="text-dark fw-bold fs-4"> {car.price}</span>
+                                            </Card.Text>
+                                            <button onClick={() => handleDelete(car._id)} className="w-50 btn btn-danger fw-bold rounded-pill px-2">Delete Car</button>
+                                        </div>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        )
+                    }
+                </Row>
             </Container>
-            );
         </div>
     );
 };

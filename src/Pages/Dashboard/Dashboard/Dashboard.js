@@ -15,6 +15,7 @@ import AddCar from '../AddCar/AddCar';
 import AddReview from '../AddReview/AddReview';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import ManageAllOrder from '../ManageAllOrder/ManageAllOrder';
+import ManageCars from '../ManageCars/ManageCars';
 import MyOrder from '../MyOrder/MyOrder';
 
 
@@ -48,7 +49,7 @@ const Dashboard = () => {
                             <Link to={`${url}/myorder`} className="text-decoration-none fw-bold text-muted text-start"><p>MY ORDER</p></Link>
                             <Link to={`${url}/addreview`} className="text-decoration-none fw-bold text-muted text-start"> <p>ADD REVIEW</p></Link>
                             <Link to={`${url}/addcar`} className="text-decoration-none fw-bold text-muted text-start"><p>ADD CAR</p></Link>
-                            <Link to={`${url}/myorder`} className="text-decoration-none fw-bold text-muted text-start"><p>MANAGE PRODUCTS</p></Link>
+                            <Link to={`${url}/managecars`} className="text-decoration-none fw-bold text-muted text-start"><p>MANAGE PRODUCTS</p></Link>
                             <Link to={`${url}/manageAllOrder`} className="text-decoration-none fw-bold text-muted text-start"><p>MANAGE ALL ORDER</p></Link>
                             {
                                 admin &&
@@ -78,6 +79,9 @@ const Dashboard = () => {
                         </PrivateRoute>
                         <AdminRoute exact path={`${path}/addcar`}>
                             <AddCar></AddCar>
+                        </AdminRoute>
+                        <AdminRoute exact path={`${path}/managecars`}>
+                            <ManageCars></ManageCars>
                         </AdminRoute>
 
                     </Switch>
