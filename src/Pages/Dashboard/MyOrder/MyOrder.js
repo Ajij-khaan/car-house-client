@@ -8,7 +8,7 @@ const MyOrder = () => {
     const [allOrders, setAllOrders] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/manageorder')
+        fetch('https://murmuring-falls-57067.herokuapp.com/manageorder')
             .then(res => res.json())
             .then(data => setAllOrders(data))
     }, [])
@@ -19,7 +19,7 @@ const MyOrder = () => {
         const r = window.confirm("Do you really want to Sign Out?");
         if (r === true) {
 
-            fetch(`http://localhost:5000/manageorder/${id}`, {
+            fetch(`https://murmuring-falls-57067.herokuapp.com/manageorder/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'content-type': 'application/json',

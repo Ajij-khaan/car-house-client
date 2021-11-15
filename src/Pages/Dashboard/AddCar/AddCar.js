@@ -11,7 +11,7 @@ const AddCar = () => {
     const onSubmit = data => {
         const newCar = { name: data.name, year: data.year, price: data.price, description: data.description, milage: data.milage, engine: data.engine, img: data.img };
 
-        fetch('http://localhost:5000/cars', {
+        fetch('https://murmuring-falls-57067.herokuapp.com/cars', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

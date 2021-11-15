@@ -12,7 +12,7 @@ const AddReview = () => {
     const onSubmit = data => {
         const newCar = { name: data.name, Rating: data.rating, comment: data.comment, profileImgUrl: data.profileImgUrl, position: data.position };
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://murmuring-falls-57067.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

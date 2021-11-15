@@ -12,7 +12,7 @@ const BuyCar = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/cars/`)
+        fetch(`https://murmuring-falls-57067.herokuapp.com/cars/`)
             .then(res => res.json())
             .then(data => setCars(data))
     }, [])
@@ -24,7 +24,7 @@ const BuyCar = () => {
         const newOrder = { name: data.name, email: data.email, shipping: data.address, carDetails: car[0] };
         console.log(newOrder);
 
-        fetch('http://localhost:5000/manageorder', {
+        fetch('https://murmuring-falls-57067.herokuapp.com/manageorder', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

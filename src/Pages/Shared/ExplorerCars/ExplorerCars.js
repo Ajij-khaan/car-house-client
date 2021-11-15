@@ -7,7 +7,7 @@ import Navigation from '../Navigation/Navigation';
 const ExplorerCars = () => {
     const [cars, setCars] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/cars")
+        fetch("https://murmuring-falls-57067.herokuapp.com/cars")
             .then(res => res.json())
             .then(data => setCars(data));
     }, [])

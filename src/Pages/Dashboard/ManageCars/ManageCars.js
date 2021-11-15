@@ -5,7 +5,7 @@ const ManageCars = () => {
 
     const [cars, setCars] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/cars')
+        fetch('https://murmuring-falls-57067.herokuapp.com/cars')
             .then(res => res.json())
             .then(data => setCars(data))
     }, [])
@@ -13,7 +13,7 @@ const ManageCars = () => {
     const handleDelete = id => {
         const r = window.confirm("Do you really want to Sign Out?");
         if (r === true) {
-            fetch(`http://localhost:5000/cars/${id}`, {
+            fetch(`https://murmuring-falls-57067.herokuapp.com/cars/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'content-type': 'application/json',

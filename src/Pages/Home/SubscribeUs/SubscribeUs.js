@@ -31,7 +31,7 @@ const SubscribeUs = () => {
                                 </InputGroup>
                             </Col>
                             <Col className="text-start">
-                                <Button variant="primary" className="btn btn-primary rounded-pill align-start p-3">Subscribe Us</Button>
+                                <Button variant="primary" className="btn btn-primary rounded-pill align-start p-3 text-uppercase fw-bold">Subscribe Us</Button>
                             </Col>
                         </Row>
                     </Container >

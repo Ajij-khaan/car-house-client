@@ -87,7 +87,7 @@ const useFirebase = () => {
     //Save User TO Database
     const saveUser = (email, displayName) => {
         const user = { email, displayName, role: "user" };
-        fetch('http://localhost:5000/users', {
+        fetch('https://murmuring-falls-57067.herokuapp.com/users', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -100,7 +100,7 @@ const useFirebase = () => {
     //Getting admin data
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user?.email}`)
+        fetch(`https://murmuring-falls-57067.herokuapp.com/users/${user?.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin));
     }, [user?.email])
