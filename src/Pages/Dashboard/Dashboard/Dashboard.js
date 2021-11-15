@@ -4,11 +4,10 @@ import { Col, Offcanvas, Row } from 'react-bootstrap';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
     Link,
-    useParams,
     useRouteMatch
 } from "react-router-dom";
+import useAuth from '../../../hooks/useAuth';
 import PrivateRoute from '../../Authentication/PrivateRoute/PrivateRoute';
 import AddCar from '../AddCar/AddCar';
 
@@ -24,7 +23,8 @@ const Dashboard = () => {
 
 
     let { path, url } = useRouteMatch();
-
+    const { admin } = useAuth();
+    console.log(admin);
     return (
 
         <div>
@@ -32,8 +32,10 @@ const Dashboard = () => {
             <Row>
                 <Col md={4}>
                     <h1>Dashbard</h1>
-
-                    <Link to={`${url}/makeadmin`}>Make Admin</Link>
+                    {
+                        admin &&
+                        <Link to={`${url}/makeadmin`}>Make Admin</Link>
+                    }
                     <br />
                     <Link to={`${url}/addreview`}>Add REview</Link>
                     <br />
