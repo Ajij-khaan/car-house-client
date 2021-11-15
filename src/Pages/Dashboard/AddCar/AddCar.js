@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Alert } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import Navigation from '../../Shared/Navigation/Navigation';
+
 
 const AddCar = () => {
 
+    const [carSuccess, setCarSUccess] = useState(false)
     const { register, handleSubmit, reset } = useForm();
+
     const onSubmit = data => {
         const newCar = { name: data.name, year: data.year, price: data.price, description: data.description, milage: data.milage, engine: data.engine, img: data.img };
 
@@ -18,8 +21,7 @@ const AddCar = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    console.log(data);
-                    alert('successfully added the car');
+                    setCarSUccess(true);
                     reset();
                 }
             })
@@ -30,6 +32,10 @@ const AddCar = () => {
             <div className="bg-light mt-3 py-3 text-start">
                 <form onSubmit={handleSubmit(onSubmit)} className=" ps-3 my-3">
                     <div className="fw-bold text-primary">Add a New Car</div>
+
+                    {
+                        carSuccess && <Alert variant="success">New Car Added Successfully</Alert>
+                    }
 
                     <p className="mt-3">Car Name <span className="text-danger fw-bold">*</span></p>
                     <input {...register("name", { required: true })} type="text" className="py-3 px-5 w-50 bg-light border-primary " />

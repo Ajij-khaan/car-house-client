@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Alert } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import useAuth from '../../../hooks/useAuth';
 
 const AddReview = () => {
 
-    const { register, handleSubmit, reset } = useForm();
+    const { user } = useAuth();
+    const [reviewSuccess, setReviewSUccess] = useState(false)
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const onSubmit = data => {
-
-        console.log(data);
-
         const newCar = { name: data.name, Rating: data.rating, comment: data.comment, profileImgUrl: data.profileImgUrl };
 
         fetch('http://localhost:5000/reviews', {
@@ -21,27 +22,51 @@ const AddReview = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    alert('Review added Successfully');
+                    // console.log(data)
+                    setReviewSUccess(true)
                     reset();
                 }
             })
     }
 
-
-
     return (
         <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input {...register("name",)} placeholder="Name" className='p-3 border-2 border-danger mb-3 w-100 mt-3' />
+            <form onSubmit={handleSubmit(onSubmit)} className=" ps-3 my-3">
+                <div className="fw-bold text-primary">Put a Review</div>
+
+                {
+                    reviewSuccess && <Alert variant="success">Review Added Successfully</Alert>
+                }
+
+                <p className="mt-3">Name <span className="text-danger fw-bold">*</span></p>
+                <input {...register("name", { required: true })} defaultValue={user?.displayName} type="text" className="py-3 px-5 w-50 bg-light border-primary " />
+                {errors.email && <Alert variant="danger">This field is required </Alert>}
                 <br />
-                <input {...register("rating",)} placeholder="Rating" className='p-3 border-2 border-danger mb-3 w-100 mt-3' />
+                <p className="mt-3">Comments <span className="text-danger fw-bold">*</span></p>
+                <input {...register("comment", { required: true })} type="text" className="py-3 px-5 w-50 bg-light border-primary " />
+                {errors.comment && <Alert variant="danger">This field is required </Alert>}
                 <br />
-                <input {...register("comment",)} placeholder="Comment" className='p-3 border-2 border-danger mb-3 w-100 mt-3' />
+                <p className="mt-3">Rating 0-5 <span className="text-danger fw-bold">*</span></p>
+                <input {...register("rating", { min: 0, max: 5, required: true })} type="text" className="py-3 px-5 w-50 bg-light border-primary " />
                 <br />
-                <input {...register("profileImgUrl",)} placeholder="Profile Image Url" className='p-3 border-2 border-danger mb-3 w-100 mt-3' />
+                {errors.rating ? (
+                    <>
+                        {errors.rating.type === "required" && (
+                            <Alert k variant="danger"> THis Field is required </Alert>
+                        )}
+                        {errors.rating && (
+                            <Alert k variant="danger"> Put Value from 0-5 </Alert>
+
+                        )}
+                    </>
+                ) : null}
                 <br />
-                <input type="submit" />
+                <p className="mt-3">Profile Image Url <span className="text-danger fw-bold">*</span></p>
+                <input {...register("profileImgUrl")} type="text" className="py-3 px-5 w-50 bg-light border-primary " />
+                <br />
+                <input type="submit" className=" btn btn-primary rounded-pill px-5 mt-3" />
             </form>
+
         </div>
     );
 };
