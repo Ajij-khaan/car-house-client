@@ -13,10 +13,10 @@ import AddReview from './Pages/Dashboard/AddReview/AddReview';
 import ManageCars from './Pages/Dashboard/ManageCars/ManageCars';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
-import DashboardHome from './Pages/Dashboard/DashboardHome/DashboardHome';
 import ExplorerCars from './Pages/Shared/ExplorerCars/ExplorerCars';
 import NotFound from './Pages/Shared/NotFound/NotFound';
 import UnderConstruction from './Pages/Shared/UnderConstruction/UnderConstruction';
+import Pay from './Pages/Dashboard/Pay/Pay';
 
 
 function App() {
@@ -46,6 +46,9 @@ function App() {
               <Dashboard></Dashboard>
             </PrivateRoute>
 
+            <PrivateRoute path="/pay">
+              <Pay></Pay>
+            </PrivateRoute>
             <PrivateRoute path="/myorder">
               <MyOrder></MyOrder>
             </PrivateRoute>

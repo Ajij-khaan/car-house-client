@@ -11,21 +11,24 @@ const ManageCars = () => {
     }, [])
 
     const handleDelete = id => {
-        fetch(`http://localhost:5000/cars/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'content-type': 'application/json',
-            },
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount !== 0) {
-                    alert('deleted Successfully');
-                    console.log(data);
-                    const remain = cars.filter(order => order?._id !== id);
-                    setCars(remain);
-                }
+        const r = window.confirm("Do you really want to Sign Out?");
+        if (r === true) {
+            fetch(`http://localhost:5000/cars/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'content-type': 'application/json',
+                },
             })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount !== 0) {
+                        alert('deleted Successfully');
+                        console.log(data);
+                        const remain = cars.filter(order => order?._id !== id);
+                        setCars(remain);
+                    }
+                })
+        }
     }
     return (
         <div>

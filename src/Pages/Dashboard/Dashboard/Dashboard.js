@@ -14,6 +14,7 @@ import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import ManageAllOrder from '../ManageAllOrder/ManageAllOrder';
 import ManageCars from '../ManageCars/ManageCars';
 import MyOrder from '../MyOrder/MyOrder';
+import Pay from '../Pay/Pay';
 
 const Dashboard = () => {
     let { path, url } = useRouteMatch();
@@ -41,6 +42,7 @@ const Dashboard = () => {
                             {
                                 !admin &&
                                 <div>
+                                    <Link to={`${url}/pay`} className="text-decoration-none fw-bold text-muted text-start"><p>PAY</p></Link>
                                     <Link to={`${url}/myorder`} className="text-decoration-none fw-bold text-muted text-start"><p>MY ORDER</p></Link>
                                     <Link to={`${url}/addreview`} className="text-decoration-none fw-bold text-muted text-start"> <p>ADD REVIEW</p></Link>
                                 </div>
@@ -70,6 +72,7 @@ const Dashboard = () => {
                             </AdminRoute>
                         }
 
+
                         <PrivateRoute exact path={`${path}`}>
                             <MyOrder></MyOrder>
                         </PrivateRoute>
@@ -85,6 +88,9 @@ const Dashboard = () => {
                         <AdminRoute exact path={`${path}/manageAllOrder`}>
                             <ManageAllOrder></ManageAllOrder>
                         </AdminRoute>
+                        <PrivateRoute exact path={`${path}/pay`}>
+                            <Pay></Pay>
+                        </PrivateRoute>
                         <PrivateRoute exact path={`${path}/myorder`}>
                             <MyOrder></MyOrder>
                         </PrivateRoute>

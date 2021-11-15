@@ -16,21 +16,26 @@ const MyOrder = () => {
     const myOrder = allOrders.filter(order => order?.email === user?.email);
 
     const handleDelete = id => {
-        fetch(`http://localhost:5000/manageorder/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'content-type': 'application/json',
-            },
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount !== 0) {
-                    alert('deleted Successfully');
-                    console.log(data);
-                    const remain = allOrders.filter(order => order?._id !== id);
-                    setAllOrders(remain);
-                }
+        const r = window.confirm("Do you really want to Sign Out?");
+        if (r === true) {
+
+            fetch(`http://localhost:5000/manageorder/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'content-type': 'application/json',
+                },
             })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount !== 0) {
+                        alert('deleted Successfully');
+                        console.log(data);
+                        const remain = allOrders.filter(order => order?._id !== id);
+                        setAllOrders(remain);
+                    }
+                })
+        }
+
     }
 
     console.log(myOrder);
@@ -55,7 +60,7 @@ const MyOrder = () => {
 
                         </Col>
                         <Col xs={12} md={6}>
-                            <p className='fs-6 text-dark fw-bold text-end'>ARRives Tommorow</p>
+                            <p className='fs-6 text-dark fw-bold text-end'>Arrives Tomorrow</p>
                             <p className='fs-6 text-dark text-end'>7AM - 7PM</p>
 
 
