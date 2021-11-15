@@ -4,6 +4,7 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import useAuth from '../../../hooks/useAuth'
+import './navigation.css'
 
 const Navigation = () => {
     const { user, logOut } = useAuth();
@@ -15,7 +16,7 @@ const Navigation = () => {
                     <Navbar.Toggle className=' bg-dark' />
                     <Navbar.Collapse className="justify-content-end text-dark">
                         <Nav className="ms-auto">
-                            <Nav.Link as={HashLink} to="/" className="fw-bold text-white">HOME</Nav.Link>
+                            <Nav.Link as={HashLink} to="/" className=" fw-bold text-white">HOME</Nav.Link>
                             <Nav.Link as={HashLink} to="/explorercar" className="fw-bold text-white">EXPLORER CARS</Nav.Link>
                             {user?.email && <Nav.Link as={HashLink} to="/dashboard" className="fw-bold text-white">DASHBOARD</Nav.Link>}
                             {!user?.email && <Nav.Link as={HashLink} to="/login" className="fw-bold text-white">LOGIN</Nav.Link>}
