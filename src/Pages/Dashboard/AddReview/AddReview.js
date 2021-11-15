@@ -10,7 +10,7 @@ const AddReview = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const onSubmit = data => {
-        const newCar = { name: data.name, Rating: data.rating, comment: data.comment, profileImgUrl: data.profileImgUrl };
+        const newCar = { name: data.name, Rating: data.rating, comment: data.comment, profileImgUrl: data.profileImgUrl, position: data.position };
 
         fetch('http://localhost:5000/reviews', {
             method: 'POST',
@@ -61,6 +61,11 @@ const AddReview = () => {
                     </>
                 ) : null}
                 <br />
+
+                <p className="mt-3">Position <span className="text-danger fw-bold">*</span></p>
+                <input {...register("position")} type="text" className="py-3 px-5 w-50 bg-light border-primary " />
+                <br />
+
                 <p className="mt-3">Profile Image Url <span className="text-danger fw-bold">*</span></p>
                 <input {...register("profileImgUrl")} type="text" className="py-3 px-5 w-50 bg-light border-primary " />
                 <br />
