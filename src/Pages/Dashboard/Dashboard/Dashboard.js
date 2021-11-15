@@ -8,6 +8,7 @@ import {
     useRouteMatch
 } from "react-router-dom";
 import useAuth from '../../../hooks/useAuth';
+import AdminRoute from '../../Authentication/AdminRoute/AdminRoute';
 import PrivateRoute from '../../Authentication/PrivateRoute/PrivateRoute';
 import AddCar from '../AddCar/AddCar';
 
@@ -61,23 +62,23 @@ const Dashboard = () => {
 
                     <Switch>
 
-                        <PrivateRoute exact path={`${path}/makeadmin`}>
+                        <AdminRoute exact path={`${path}/makeadmin`}>
                             <MakeAdmin></MakeAdmin>
-                        </PrivateRoute>
+                        </AdminRoute>
 
                         <PrivateRoute exact path={`${path}/addreview`}>
                             <AddReview></AddReview>
                         </PrivateRoute>
 
-                        <PrivateRoute exact path={`${path}/manageAllOrder`}>
+                        <AdminRoute exact path={`${path}/manageAllOrder`}>
                             <ManageAllOrder></ManageAllOrder>
-                        </PrivateRoute>
+                        </AdminRoute>
                         <PrivateRoute exact path={`${path}/myorder`}>
                             <MyOrder></MyOrder>
                         </PrivateRoute>
-                        <PrivateRoute exact path={`${path}/addcar`}>
+                        <AdminRoute exact path={`${path}/addcar`}>
                             <AddCar></AddCar>
-                        </PrivateRoute>
+                        </AdminRoute>
 
                     </Switch>
                 </Col>
