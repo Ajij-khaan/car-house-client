@@ -15,6 +15,8 @@ import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import DashboardHome from './Pages/Dashboard/DashboardHome/DashboardHome';
 import ExplorerCars from './Pages/Shared/ExplorerCars/ExplorerCars';
+import NotFound from './Pages/Shared/NotFound/NotFound';
+import UnderConstruction from './Pages/Shared/UnderConstruction/UnderConstruction';
 
 function App() {
   return (
@@ -72,7 +74,12 @@ function App() {
               <MakeAdmin></MakeAdmin>
             </PrivateRoute>
 
-
+            <Route path="/underconstruction">
+              <UnderConstruction></UnderConstruction>
+            </Route>
+            <Route path="/*">
+              <NotFound></NotFound>
+            </Route>
           </Switch>
         </Router>
       </AuthProvider>
