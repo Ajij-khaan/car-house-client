@@ -8,6 +8,7 @@ import './navigation.css'
 
 const Navigation = () => {
     const { user, logOut } = useAuth();
+    console.log(user);
     return (
         <div >
             <Navbar collapseOnSelect expand="lg" sticky="top" variant="dark">

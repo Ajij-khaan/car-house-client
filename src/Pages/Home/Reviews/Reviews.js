@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Rating from 'react-rating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
-import { Card, Carousel, Col, Container, Row } from 'react-bootstrap';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 const fullStar = <FontAwesomeIcon icon={faStar} />
 const halfStar = "far fa-star"
 // const faSarSharp = <FontAwesomeIcon icon={faStarAndCrescent} />
@@ -10,7 +10,6 @@ const halfStar = "far fa-star"
 const Reviews = () => {
 
     const [reviews, setReviews] = useState([]);
-
     useEffect(() => {
         fetch('http://localhost:5000/reviews')
             .then(res => res.json())
@@ -54,5 +53,4 @@ const Reviews = () => {
         </div >
     );
 };
-
 export default Reviews;

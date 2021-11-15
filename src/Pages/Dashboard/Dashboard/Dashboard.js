@@ -1,4 +1,4 @@
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row, Button } from 'react-bootstrap';
 import {
     Switch,
     Link,
@@ -17,7 +17,7 @@ import MyOrder from '../MyOrder/MyOrder';
 
 const Dashboard = () => {
     let { path, url } = useRouteMatch();
-    const { user, admin } = useAuth();
+    const { user, admin, logOut } = useAuth();
 
     return (
         <div className="">
@@ -36,16 +36,28 @@ const Dashboard = () => {
                 <Col md={4} className="border-2 border-end h-100" >
                     <div className="ms-5 pt-5">
                         <div>
+
                             <Link to="/home" className="text-decoration-none fw-bold text-muted text-start"><p>HOME</p></Link>
-                            <Link to={`${url}/myorder`} className="text-decoration-none fw-bold text-muted text-start"><p>MY ORDER</p></Link>
-                            <Link to={`${url}/addreview`} className="text-decoration-none fw-bold text-muted text-start"> <p>ADD REVIEW</p></Link>
-                            <Link to={`${url}/addcar`} className="text-decoration-none fw-bold text-muted text-start"><p>ADD CAR</p></Link>
-                            <Link to={`${url}/managecars`} className="text-decoration-none fw-bold text-muted text-start"><p>MANAGE PRODUCTS</p></Link>
-                            <Link to={`${url}/manageAllOrder`} className="text-decoration-none fw-bold text-muted text-start"><p>MANAGE ALL ORDER</p></Link>
+                            {
+                                !admin &&
+                                <div>
+
+                                    <Link to={`${url}/myorder`} className="text-decoration-none fw-bold text-muted text-start"><p>MY ORDER</p></Link>
+                                    <Link to={`${url}/addreview`} className="text-decoration-none fw-bold text-muted text-start"> <p>ADD REVIEW</p></Link>
+                                </div>
+
+                            }
                             {
                                 admin &&
-                                <Link to={`${url}/makeadmin`} className="text-decoration-none fw-bold text-muted text-start"><p>MAKE ADMIN</p></Link>
+                                <div>
+
+                                    <Link to={`${url}/addcar`} className="text-decoration-none fw-bold text-muted text-start"><p>ADD CAR</p></Link>
+                                    <Link to={`${url}/managecars`} className="text-decoration-none fw-bold text-muted text-start"><p>MANAGE PRODUCTS</p></Link>
+                                    <Link to={`${url}/manageAllOrder`} className="text-decoration-none fw-bold text-muted text-start"><p>MANAGE ALL ORDER</p></Link>
+                                    <Link to={`${url}/makeadmin`} className="text-decoration-none fw-bold text-muted text-start"><p>MAKE ADMIN</p></Link>
+                                </div>
                             }
+                            <Button onClick={logOut} className=" mt-5 fw-bold px-5 rounded-pill  ">LOGOUT</Button>
                         </div>
 
                     </div>
@@ -53,6 +65,16 @@ const Dashboard = () => {
                 <Col md={8}>
 
                     <Switch>
+                        {
+                            admin &&
+                            <AdminRoute exact path={`${path}/manageAllOrder`}>
+                                <ManageAllOrder></ManageAllOrder>
+                            </AdminRoute>
+                        }
+
+                        <PrivateRoute exact path={`${path}`}>
+                            <MyOrder></MyOrder>
+                        </PrivateRoute>
 
                         <AdminRoute exact path={`${path}/makeadmin`}>
                             <MakeAdmin></MakeAdmin>

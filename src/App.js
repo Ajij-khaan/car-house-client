@@ -41,12 +41,9 @@ function App() {
             <PrivateRoute path="/explorercar">
               <ExplorerCars></ExplorerCars>
             </PrivateRoute>
+
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
-            </PrivateRoute>
-
-            <PrivateRoute path="/dashboardhome">
-              <DashboardHome></DashboardHome>
             </PrivateRoute>
 
             <PrivateRoute path="/myorder">
