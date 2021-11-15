@@ -15,6 +15,7 @@ import AddCar from '../AddCar/AddCar';
 import AddReview from '../AddReview/AddReview';
 import DashboardHome from '../DashboardHome/DashboardHome';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
+import ManageAllOrder from '../ManageAllOrder/ManageAllOrder';
 import MyOrder from '../MyOrder/MyOrder';
 
 
@@ -58,7 +59,7 @@ const Dashboard = () => {
                         </PrivateRoute>
 
                         <PrivateRoute exact path={`${path}/manageAllOrder`}>
-                            <AddReview></AddReview>
+                            <ManageAllOrder></ManageAllOrder>
                         </PrivateRoute>
                         <PrivateRoute exact path={`${path}/myorder`}>
                             <MyOrder></MyOrder>
