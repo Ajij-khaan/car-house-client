@@ -9,15 +9,14 @@ import Navigation from '../../Shared/Navigation/Navigation';
 const Register = () => {
     const location = useLocation();
     const history = useHistory();
+
     const { registerUser, error } = useAuth();
+
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data.email, data.password);
-        // setEmail(data.email)
-        // setPassword(data.password)
         registerUser(data.email, data.password, data.name, location, history);
     }
-
 
     return (
         <>

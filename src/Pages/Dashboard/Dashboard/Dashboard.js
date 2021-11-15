@@ -1,4 +1,3 @@
-import Button from '@restart/ui/esm/Button';
 import React, { useState } from 'react';
 import { Col, Offcanvas, Row } from 'react-bootstrap';
 
@@ -16,6 +15,7 @@ import AddCar from '../AddCar/AddCar';
 import AddReview from '../AddReview/AddReview';
 import DashboardHome from '../DashboardHome/DashboardHome';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
+import MyOrder from '../MyOrder/MyOrder';
 
 
 
@@ -32,7 +32,6 @@ const Dashboard = () => {
                 <Col md={4}>
                     <h1>Dashbard</h1>
 
-
                     <Link to={`${url}/makeadmin`}>Make Admin</Link>
                     <br />
                     <Link to={`${url}/addreview`}>Add REview</Link>
@@ -43,8 +42,6 @@ const Dashboard = () => {
                     <br />
                     <Link to={`${url}/addcar`}>addcar</Link>
                     <br />
-
-
 
                 </Col>
                 <Col md={8}>
@@ -64,7 +61,7 @@ const Dashboard = () => {
                             <AddReview></AddReview>
                         </PrivateRoute>
                         <PrivateRoute exact path={`${path}/myorder`}>
-                            <AddReview></AddReview>
+                            <MyOrder></MyOrder>
                         </PrivateRoute>
                         <PrivateRoute exact path={`${path}/addcar`}>
                             <AddCar></AddCar>

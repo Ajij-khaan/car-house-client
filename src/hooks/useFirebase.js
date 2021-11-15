@@ -12,6 +12,7 @@ const useFirebase = () => {
 
     const auth = getAuth();
 
+    //Registration
     const registerUser = (email, password, name, location, history) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
@@ -22,12 +23,12 @@ const useFirebase = () => {
 
                 updateProfile(auth.currentUser, {
                     displayName: name
-                }).then(() => {
-                    saveUser(email, name);
-                }).catch((error) => {
-                    // An error occurred
-                    // ...
-                });
+                })
+                    .then(() => {
+                        saveUser(email, name);
+                    })
+                    .catch((error) => {
+                    });
 
                 history.push(location.state?.from || '/home');
 
@@ -40,6 +41,7 @@ const useFirebase = () => {
 
     }
 
+    //Login
     const loginUser = (email, password, location, history) => {
         setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
@@ -57,7 +59,7 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false));
     }
 
-    //Firebase Logout System
+    //Logout
     const logOut = () => {
         setIsLoading(true);
         signOut(auth)
@@ -81,8 +83,7 @@ const useFirebase = () => {
         return () => unsubscribed;
     }, [])
 
-    //save user to DB
-
+    //Save User TO Database
     const saveUser = (email, displayName) => {
         const user = { email, displayName, role: "user" };
         fetch('http://localhost:5000/users', {
