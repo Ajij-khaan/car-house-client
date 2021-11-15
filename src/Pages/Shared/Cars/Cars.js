@@ -13,7 +13,7 @@ const Cars = () => {
     }, [])
     return (
         <div>
-            <div className="bg-" >
+            <div className="" >
                 <h1 id="popular-tours" className="font-body fw-bold mb-4 pt-5 fs-1 text-primary">MOST POPULAR CARS</h1>
                 <Container className="mb-5">
                     <Row id="services" xs={1} md={2} lg={3} className="g-4 mt-5border-primary">
