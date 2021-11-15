@@ -56,10 +56,7 @@ const Dashboard = () => {
                         </div>
 
                     </div>
-
                 </Col>
-
-
                 <Col md={8}>
 
                     <Switch>

@@ -1,17 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Alert } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
 const MakeAdmin = () => {
 
+    const [adminSuccess, setAdminSUccess] = useState(false)
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
-
-        console.log(data);
-
         const newAdmin = { email: data.email };
-
         fetch('http://localhost:5000/users/admin', {
             method: 'PUT',
             headers: {
@@ -23,7 +20,8 @@ const MakeAdmin = () => {
             .then(data => {
                 console.log(data);
                 if (data.acknowledged === true) {
-                    alert('Admin added Successfully');
+                    setAdminSUccess(true);
+                    console.log(adminSuccess)
                     reset();
                 }
             })
@@ -33,6 +31,10 @@ const MakeAdmin = () => {
         <div className="bg-light mt-3 py-3 text-start">
             <form onSubmit={handleSubmit(onSubmit)} className=" ps-3 my-3">
                 <div className="fw-bold text-primary">Make Admin</div>
+
+                {
+                    adminSuccess && <Alert variant="success">Admin Added Successfully</Alert>
+                }
 
                 <p className="mt-3">Enter Admin Emial <span className="text-danger fw-bold">*</span></p>
                 <input {...register("email", { required: true })} type="email" className="py-3 px-5 w-50 bg-light border-primary " />
