@@ -1,4 +1,5 @@
 import React from 'react';
+import { Alert } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
 const MakeAdmin = () => {
@@ -29,12 +30,15 @@ const MakeAdmin = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input {...register("email",)} placeholder="Enter Admin Email" className='p-3 border-2 border-danger mb-3 w-100 mt-3' />
+        <div className="bg-light mt-3 py-3 text-start">
+            <form onSubmit={handleSubmit(onSubmit)} className=" ps-3 my-3">
+                <div className="fw-bold text-primary">Make Admin</div>
+
+                <p className="mt-3">Enter Admin Emial <span className="text-danger fw-bold">*</span></p>
+                <input {...register("email", { required: true })} type="email" className="py-3 px-5 w-50 bg-light border-primary " />
                 <br />
 
-                <input type="submit" />
+                <input type="submit" className=" btn btn-primary rounded-pill px-5 mt-3" />
             </form>
         </div>
     );
