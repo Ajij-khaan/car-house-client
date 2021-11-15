@@ -1,7 +1,4 @@
-import Button from '@restart/ui/esm/Button';
-import React, { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
-
 import {
     Switch,
     Link,
@@ -18,17 +15,11 @@ import ManageAllOrder from '../ManageAllOrder/ManageAllOrder';
 import ManageCars from '../ManageCars/ManageCars';
 import MyOrder from '../MyOrder/MyOrder';
 
-
-
 const Dashboard = () => {
-
-
-
     let { path, url } = useRouteMatch();
     const { user, admin } = useAuth();
 
     return (
-
         <div className="">
             <Row className="bg-light" style={{ backgroundColor: "white" }}>
                 <Col sm={6} md={4} className=" py-5 border-2 border-end">

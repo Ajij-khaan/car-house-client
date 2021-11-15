@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Col } from 'react-bootstrap';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
 import useAuth from '../../../hooks/useAuth';
@@ -10,7 +10,6 @@ const BuyCar = () => {
     const [cars, setCars] = useState([]);
     const { user } = useAuth();
 
-
     useEffect(() => {
 
         fetch(`http://localhost:5000/cars/`)
@@ -19,10 +18,7 @@ const BuyCar = () => {
     }, [])
 
     const car = cars.filter(car => orderId === car._id)
-    console.log(car)
-
     const { register, handleSubmit, reset } = useForm();
-
     const onSubmit = data => {
         // console.log(data);
         const newOrder = { name: data.name, email: data.email, shipping: data.address, carDetails: car[0] };
@@ -38,7 +34,7 @@ const BuyCar = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    alert('successfully added the user');
+                    alert('successfully added the Ca');
                     reset();
                 }
             })
@@ -46,33 +42,56 @@ const BuyCar = () => {
 
     return (
         <>
-            <Navigation></Navigation>
-            <Col>
-                <Card className="border-1 ">
-                    <Card.Img variant="top" src={car[0]?.img} />
-                    <Card.Body>
-                        <Card.Title className='fs-5 fw-bold text-dark'>{car[0]?.name}</Card.Title>
-                        <div className='d-flex justify-content-center'>
-                            <div className='mx-3 d-flex justify-content-center'>
-                                <p className='text-danger fw-bold fs-3'>${car[0]?.price}</p>
-                                <p className='mt-2 text-muted fw-bold'>/ Per Person</p>
-                            </div>
-                        </div>
-                        <Card.Text className='text-dark'>{car[0]?.description.slice(0, 200)}</Card.Text>
-                    </Card.Body>
-                </Card>
-            </Col>
+            <div style={{ backgroundColor: "black", color: "white" }}>
+                <Navigation></Navigation>
+            </div>
+            <Container>
+                <Row>
 
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input {...register("name",)} placeholder="Name" defaultValue={user?.displayName} className='p-3 border-2 border-danger mb-3 w-100 mt-3' />
+                    <Col md={6}>
+                        <Card className="p-3 bg-light shadow-sm">
+                            <Card.Header className="text-start fw-bold py- fs-5">{car[0]?.name}</Card.Header>
 
-                <input {...register("email",)} placeholder="Email" defaultValue={user?.email} className='p-3 border-2 border-danger mb-3 w-100' />
+                            <Card.Img variant="top" src={car[0]?.img} />
 
-                <input {...register("address",)} placeholder="Shipping Address" className='p-3 border-2 border-danger mb-3 w-100' />
+                            <Card.Body >
+                                <Card.Text className="d-flex justify-content-between">
+                                    <div className=" fs-6 ">
+                                        Milage:<span className="text-dark fw-bold"> {car[0]?.milage}</span>
+                                    </div>
+                                    <Card.Text className=" fs-6 ">
+                                        Year:<span className="text-dark fw-bold"> {car[0]?.year}</span>
+                                    </Card.Text>
+                                </Card.Text>
 
-                <br />
-                <input type="submit" value="Book Now" className='btn btn-danger text-white fw-bold px-5 w-100' />
-            </form>
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <Card.Text className=" fs-6 text-start ">
+                                        Engine:<span className="text-dark fw-bold"> {car[0]?.engine.slice(0, 20)}</span>
+                                    </Card.Text>
+
+                                    <Card.Text className="fs-6 ">
+                                        <span className="text-dark fw-bold ">Price:  {car[0]?.price}</span>
+                                    </Card.Text>
+
+                                </div>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+
+                    <Col md={6}>
+                        <form onSubmit={handleSubmit(onSubmit)} className="bg-dark p-5 h-100">
+                            <input {...register("name",)} placeholder="Name" defaultValue={user?.displayName} className='p-3 border-2 border-primary mb-3 w-100 mt-3' />
+
+                            <input {...register("email",)} placeholder="Email" defaultValue={user?.email} className='p-3 border-2 border-primary mb-3 w-100' />
+
+                            <input {...register("address",)} placeholder="Shipping Address" className='p-3 border-2 border-primary mb-3 w-100' />
+
+                            <br />
+                            <input type="submit" value="Place Order" className='btn btn-primary text-white fw-bold px-5 w-100' />
+                        </form>
+                    </Col>
+                </Row>
+            </Container>
         </>
     );
 
