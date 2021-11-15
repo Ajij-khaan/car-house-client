@@ -31,7 +31,7 @@ const AddReview = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit(onSubmit)} className=" ps-3 my-3">
+            <form onSubmit={handleSubmit(onSubmit)} className=" ps-3 my-3 text-start">
                 <div className="fw-bold text-primary">Put a Review</div>
 
                 {

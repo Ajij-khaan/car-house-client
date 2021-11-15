@@ -37,7 +37,7 @@ const MyOrder = () => {
 
     return (
         <Container>
-            <h1 className='text-uppercase my-5 fw-bold fs-3 text-primary'>Order History</h1>
+            <div className="fw-bold text-primary mt-3">Order History</div>
             <p className="text-start">Found: <span className="fw-bold">{myOrder.length}</span> orders</p>
             {
                 myOrder.map(order =>
