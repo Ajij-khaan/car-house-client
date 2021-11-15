@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import Car from '../Car/Car';
+import Footer from '../Footer/Footer';
 import Navigation from '../Navigation/Navigation';
 
 const ExplorerCars = () => {
@@ -26,6 +27,7 @@ const ExplorerCars = () => {
 
                 </Container>
             </div>
+            <Footer></Footer>
         </>
     );
 };
