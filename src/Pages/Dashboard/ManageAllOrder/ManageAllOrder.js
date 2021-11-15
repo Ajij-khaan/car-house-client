@@ -6,7 +6,7 @@ const ManageAllOrder = () => {
     const [allOrders, setAllOrders] = useState([]);
 
     useEffect(() => {
-        fetch('https://murmuring-falls-57067.herokuapp.com//manageorder')
+        fetch('https://murmuring-falls-57067.herokuapp.com/manageorder')
             .then(res => res.json())
             .then(data => setAllOrders(data))
     }, [])
